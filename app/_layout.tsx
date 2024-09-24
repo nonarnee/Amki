@@ -9,6 +9,7 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <Stack>
         <Stack.Screen name="(list)" options={{ headerShown: false }} />
+        <Stack.Screen name="detail/[id]" options={{ headerShown: false }} />
       </Stack>
     </SafeAreaProvider>
   );

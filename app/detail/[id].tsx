@@ -8,10 +8,14 @@ import Header from '@/components/Header';
 
 export default function Detail() {
   const { id } = useLocalSearchParams();
-  console.log(id);
+  console.log('detail', id);
 
   const handleBack = () => {
     router.back();
+  };
+
+  const handleStart = () => {
+    router.push(`/study/${id}`);
   };
 
   const words = [
@@ -39,8 +43,11 @@ export default function Detail() {
         <View style={{ width: '100%', height: 150, backgroundColor: Colors.background }} />
       </ScrollView>
       <View style={styles.startButtonWrapper}>
-        <LinearGradient colors={[Colors.background, 'transparent']} style={styles.buttonGradient} />
-        <TouchableOpacity style={styles.startButton}>
+        <LinearGradient
+          colors={['rgba(18,18,18,0)', Colors.background]}
+          style={styles.buttonGradient}
+        />
+        <TouchableOpacity onPress={handleStart} style={styles.startButton}>
           <Text style={styles.startButtonText}>학습 시작 👩🏻‍💻</Text>
         </TouchableOpacity>
       </View>
@@ -80,6 +87,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.background,
   },
   buttonGradient: {
+    position: 'absolute',
+    top: -20,
+    left: 20,
     width: '100%',
     height: 20,
   },
@@ -90,6 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     color: Colors.text,
     borderRadius: 16,
+    zIndex: 1,
   },
   startButtonText: {
     fontSize: 18,

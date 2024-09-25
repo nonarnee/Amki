@@ -10,6 +10,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(list)" options={{ headerShown: false }} />
         <Stack.Screen name="detail/[id]" options={{ headerShown: false }} />
+        <Stack.Screen name="study/[id]" options={{ headerShown: false }} />
       </Stack>
     </SafeAreaProvider>
   );

@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf: 'stretch',
     paddingVertical: 20,
     backgroundColor: Colors.card,
   },

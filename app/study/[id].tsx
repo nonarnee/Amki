@@ -26,6 +26,7 @@ export default function Study() {
   const [answerCount, setAnswerCount] = useState(0);
   const [failedWordIds, setFailedWordIds] = useState<number[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showAnswer, setShowAnswer] = useState(false);
 
   const handleBack = () => {
     Alert.alert('학습을 종료하시겠습니까?', '', [
@@ -37,6 +38,17 @@ export default function Study() {
   const handleCheck = () => {
     setCurrentIndex((prevState) => prevState + 1);
     setAnswerCount((prevState) => prevState + 1);
+    setShowAnswer(false);
+  };
+
+  const handleWrong = () => {
+    setCurrentIndex((prevState) => prevState + 1);
+    setFailedWordIds((prevState) => prevState.concat(testWords[currentIndex].id));
+    setShowAnswer(false);
+  };
+
+  const handleShowAnswer = () => {
+    setShowAnswer(true);
   };
 
   const handleRetest = () => {
@@ -44,11 +56,6 @@ export default function Study() {
     setFailedWordIds([]);
     setCurrentIndex(0);
     setAnswerCount(0);
-  };
-
-  const handleWrong = () => {
-    setCurrentIndex((prevState) => prevState + 1);
-    setFailedWordIds((prevState) => prevState.concat(testWords[currentIndex].id));
   };
 
   return (
@@ -76,7 +83,19 @@ export default function Study() {
               ? testWords[currentIndex].head
               : '시험을 완료했습니다 😎'}
           </Text>
+          {showAnswer && (
+            <Text style={{ ...styles.cardText, paddingTop: 10 }}>
+              {testWords[currentIndex].tail}
+            </Text>
+          )}
         </View>
+        {currentIndex <= testWords.length - 1 && !showAnswer && (
+          <View style={styles.answerButtonWrapper}>
+            <TouchableOpacity onPress={handleShowAnswer} style={styles.answerButton}>
+              <Text style={styles.answerButtonText}>정답 보기</Text>
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
 
       {testWords.length > currentIndex ? (
@@ -152,6 +171,25 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontSize: 32,
+    color: Colors.text,
+  },
+  answerButtonWrapper: {
+    position: 'absolute',
+    bottom: 25,
+    left: 10,
+    width: '100%',
+    alignItems: 'center',
+  },
+  answerButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.primary,
+    borderRadius: 12,
+  },
+  answerButtonText: {
+    fontSize: 16,
     color: Colors.text,
   },
   actionButtonWrapper: {

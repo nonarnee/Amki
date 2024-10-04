@@ -1,8 +1,13 @@
-import { Stack } from 'expo-router';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useColorScheme } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+import { useReactQueryDevTools } from '@dev-plugins/react-query';
+import { Stack } from 'expo-router';
+
+import queryClient from '@/lib/queryClient';
 
 export default function RootLayout() {
+  useReactQueryDevTools(queryClient);
   const colorScheme = useColorScheme();
 
   return (

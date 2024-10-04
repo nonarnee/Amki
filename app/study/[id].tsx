@@ -1,11 +1,13 @@
+import { useState } from 'react';
 import { View, StyleSheet, Text, Alert, TouchableOpacity } from 'react-native';
+
 import { router, useLocalSearchParams } from 'expo-router';
 
-import commonStyles from '@/styles';
 import Header from '@/components/Header';
-import { useState } from 'react';
-import Colors from '@/constants/Colors';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import Colors from '@/constants/Colors';
+
+import commonStyles from '@/styles';
 
 export default function Study() {
   const { id } = useLocalSearchParams();

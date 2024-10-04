@@ -1,5 +1,7 @@
-import { router } from 'expo-router';
 import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native';
+
+import { router } from 'expo-router';
+
 import Header from '@/components/Header';
 import Colors from '@/constants/Colors';
 import { wordset } from '@/constants/Data';

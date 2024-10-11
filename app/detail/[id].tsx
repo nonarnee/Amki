@@ -31,31 +31,6 @@ export default function Detail() {
     { head: 'deliberate', tail: '숙고하다, 신중한' },
   ];
 
-  const words1 = `
-    (1, 'inform', '알리다'),
-    (1, 'convince', '확신시키다'),
-    (1, 'anticipate', '예상하다, 기대하다'),
-    (1, 'particular', '세부사항, 특별한'),
-    (1, 'persuasive', '설득력이 있는'),
-    (1, 'initiative', '주도(권), 계획'),
-    (1, 'optimistic', '낙관적인'),
-    (1, 'deliberate', '숙고하다, 신중한');
-  `;
-
-  const words2 = `
-    (2, 'information', '정보'),
-    (2, 'approval', '승인'),
-    (2, 'equipment', '장비'),
-    (2, 'processing', '처리'),
-    (2, 'interest', '관심,흥미'),
-    (2, 'machinery', '기계류'),
-    (2, 'negligence', '부주의'),
-    (2, 'luggage/baggage', '수하물'),
-    (2, 'manufacture', '제조'),
-    (2, 'stationery', '문구류'),
-    (2, 'furniture', '가구');
-  `;
-
   return (
     <View style={commonStyles.container}>
       <Header title="단어 목록" leftIconName="chevron-back" leftIconOnPress={handleBack} />

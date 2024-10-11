@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native';
 
 import { router } from 'expo-router';
@@ -5,13 +6,37 @@ import { router } from 'expo-router';
 import Header from '@/components/Header';
 import Colors from '@/constants/Colors';
 import { wordset } from '@/constants/Data';
+import useWordset from '@/hooks/queries/useWordset';
+import client from '@/lib/client';
 
 import commonStyles from '@/styles';
 
 export default function List() {
+  // const [data, setData] = useState();
+
+  const { data, isFetching, isError, error } = useWordset();
+  console.log('worset api', data);
+  console.log('isFetching', isFetching);
+  console.log('isError', isError);
+  console.log('wordset error', error);
+
   const handleSetClick = (id: number) => {
     router.push(`/detail/${id}`);
   };
+
+  // async function getWordSet() {
+  //   try {
+  //     const res = await client.get('https://localhost:3000/api/wordset');
+  //     setData(res?.data);
+  //   } catch (error) {
+  //     console.error(JSON.stringify(error));
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getWordSet();
+  // }, []);
+  // console.log('data', data);
 
   return (
     <View style={commonStyles.container}>
